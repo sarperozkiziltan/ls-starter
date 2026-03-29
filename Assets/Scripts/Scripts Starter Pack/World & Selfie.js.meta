@@ -1,0 +1,52 @@
+- !<AssetImportMetadata/85cd7aed-e56e-697d-c071-3ec52e4a6e63>
+  ImportedAssetIds:
+    JavaScriptAsset: !<reference> 4073cadc-f1fc-44ed-8edb-57808d0411db
+  ImporterName: JavaScriptAssetImporter
+  PrimaryAsset: !<reference> 4073cadc-f1fc-44ed-8edb-57808d0411db
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    JavaScriptAsset: !<own> 29c6526c-3bc3-44ca-8a9a-0057192ff9ea
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScriptAssetData/29c6526c-3bc3-44ca-8a9a-0057192ff9ea>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: f3592a47-81ca-47e3-803c-10fd0d34e2e5
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    selfieSide: false
+    selfieSideSfx: false
+    worldSide: false
+    worldSideSfx: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - selfieSide: !<reference.SceneObject[]>
+        []
+      worldSide: !<reference.SceneObject[]>
+        []
+      selfieSideSfx: !<reference.AudioComponent[]>
+        []
+      worldSideSfx: !<reference.AudioComponent[]>
+        []
+  ScriptTypes:
+    -
+      {}

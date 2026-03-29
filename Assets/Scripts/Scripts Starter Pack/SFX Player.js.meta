@@ -1,0 +1,49 @@
+- !<AssetImportMetadata/72efcd97-335a-9dd8-7e22-f20fb63e9e46>
+  ImportedAssetIds:
+    JavaScriptAsset: !<reference> dc95b683-5932-47c6-9baf-badecb7da528
+  ImporterName: JavaScriptAssetImporter
+  PrimaryAsset: !<reference> dc95b683-5932-47c6-9baf-badecb7da528
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    JavaScriptAsset: !<own> 666f3fb9-34d1-4694-9a07-4990c4942443
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScriptAssetData/666f3fb9-34d1-4694-9a07-4990c4942443>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 19b87397-881d-441f-9f9e-bb409950c867
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    addingType: false
+    debug: false
+    sfxParent: false
+    sfxs: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - addingType: 0
+      sfxs: !<reference.AudioComponent[]>
+        []
+      sfxParent: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      debug: false
+  ScriptTypes:
+    -
+      {}

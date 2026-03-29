@@ -1,0 +1,56 @@
+- !<AssetImportMetadata/afed196c-31b9-e3f7-1577-e0cece57c69f>
+  ImportedAssetIds:
+    JavaScriptAsset: !<reference> d0840651-865a-4559-91ac-de3694d82c84
+  ImporterName: JavaScriptAssetImporter
+  PrimaryAsset: !<reference> d0840651-865a-4559-91ac-de3694d82c84
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    JavaScriptAsset: !<own> a6acc489-f2b4-47df-97b1-2bb46f0cfcaf
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScriptAssetData/a6acc489-f2b4-47df-97b1-2bb46f0cfcaf>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 53b54b31-ef28-428a-9d1e-cd55357de90e
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    TouchTypeDoubleTap: false
+    TouchTypeNone: false
+    TouchTypePan: false
+    TouchTypeScale: false
+    TouchTypeSwipe: false
+    TouchTypeTap: false
+    TouchTypeTouch: false
+    enableTouchBlocking: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - enableTouchBlocking: false
+      TouchTypeSwipe: false
+      TouchTypeTouch: false
+      TouchTypeTap: false
+      TouchTypeDoubleTap: false
+      TouchTypeScale: false
+      TouchTypePan: false
+      TouchTypeNone: false
+  ScriptTypes:
+    -
+      {}
