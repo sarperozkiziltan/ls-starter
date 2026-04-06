@@ -7,6 +7,7 @@
     - !<own> b9d5003b-13e3-48fb-868a-703a953a04b8
     - !<own> 985f0a73-8bbf-4b72-9fee-5f4437c8fbb2
     - !<own> 9c9f9226-aad2-48fa-b49b-c0ea503e4123
+    - !<own> 074ec5ab-6b1a-4f78-89ab-47e8a61925a6
   layers: !<Layers/267ee9a7-aff2-4f9d-9a49-f71214747d03>
     userLayers:
       - id: 1
@@ -151,6 +152,21 @@
   Components:
     - !<own> c4afd345-de01-4092-81b5-ca78a764eed2
     - !<own> d9831995-98f3-4665-9549-625d6e847f02
+- !<SceneObject/074ec5ab-6b1a-4f78-89ab-47e8a61925a6>
+  PrefabRemaps:
+    []
+  Name: SFX(s)
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    []
 - !<Canvas/0bb505b6-ff96-4ebe-b4e8-de54aab232d1>
   PrefabRemaps:
     []
@@ -279,17 +295,16 @@
   Enabled: true
   ScriptAsset: !<reference> dc95b683-5932-47c6-9baf-badecb7da528
   ScriptInputsDefault:
-    addingType: true
     sfxs: true
     debug: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
     "":
-      addingType: 0
+      addingType: 1
       sfxs: !<reference.AudioComponent[]>
         []
-      sfxParent: !<reference.SceneObject> be11252f-9dc6-49ec-8c08-56125b447113
+      sfxParent: !<reference.SceneObject> 074ec5ab-6b1a-4f78-89ab-47e8a61925a6
       debug: false
   ScriptTypes:
     "":
@@ -1285,6 +1300,7 @@
   ScriptAsset: !<reference> a8572a73-2abe-4a99-8b4e-7f2957ac4ef1
   ScriptInputsDefault:
     sceneObjectReference: true
+    playAutomatically: true
     offsetsParam: true
     startPosition: true
     startScale: true
@@ -1314,7 +1330,7 @@
     "":
       sceneObjectReference: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       tweenName: scale
-      playAutomatically: false
+      playAutomatically: true
       loopType: 2
       type: 3
       movementType: 1
