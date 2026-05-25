@@ -26,7 +26,7 @@
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
-    cta: false
+    {}
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
@@ -36,10 +36,8 @@
   Attachments:
     []
   DefaultScriptInputs:
-    - cta:
-        liveObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
-        capturedObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
-        synced: true
+    -
+      {}
   ScriptTypes:
     -
       {}
