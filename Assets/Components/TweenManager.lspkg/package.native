@@ -2,14 +2,14 @@
   PackagePath: ""
   StudioVersion:
     major: 5
-    minor: 19
-    patch: 2
-    build: 26031623
+    minor: 22
+    patch: 1
+    build: 26062503
     type: Unset
     buildFlavor: ""
     timestamp: 0
     commit: ""
-  Description: "Tween.js is a JavaScript tweening engine for creating simple programmatic animations. It’s an open source JavaScript library created by Sole and can be easily integrated into your Lens Studio project. We've created a convenient importable object that automatically includes Tween.js into your project. Additionally, in includes a Lens Studio specific wrapper called TweenManager and a number of Lens Studio specific TweenType scripts which can be tuned in the Inspector panel."
+  Description: Tween.js is a JavaScript tweening engine for creating simple programmatic animations. It’s an open source JavaScript library created by Sole and can be easily integrated into your Lens Studio project. We've created a convenient importable object that automatically includes Tween.js into your project. Additionally, in includes a Lens Studio specific wrapper called TweenManager and a number of Lens Studio specific TweenType scripts which can be tuned in the Inspector panel.
   SvgIcon: |
     <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g clip-path="url(#clip0_0_3)">
@@ -61,7 +61,7 @@
   VersionMajor: 1
   VersionMinor: 2
   VersionPatch: 0
-  UpdateCheckpoint: 92
+  UpdateCheckpoint: 101
   ExportUid: 40e5fba5-ce26-4fbd-bd2c-633aa0526483
   ComponentUid: 7331d46e-2ada-4972-8493-b4a503928570
   PackagePolicy: CanBeUnpackedTransparent
@@ -80,3 +80,5 @@
       minor: 0
       patch: 0
       build: 0
+  coreVersion: 364
+  clientVersion: 13.9399996
