@@ -66,6 +66,10 @@ Keep `print()` to a minimum. Log only essential state and events — initializat
 
 When a task is ambiguous, a requirement is unclear, or you need information you cannot get from the project itself, **ask**. Do not guess at intent and do not silently pick a direction — a short question up front is preferred over a wrong implementation.
 
+## Git Workflow
+
+Commit and push directly to `main`. Do not create branches and do not open pull requests — this is a single-maintainer repository with a linear history, so a review flow adds ceremony with no reviewer on the other end. Do not ask about branching each time; just commit and push when asked.
+
 ## Session Log
 
 A single Lens is built over weeks across many separate sessions, so `SESSION_LOG.md` carries the context that does not survive between them. Git history records what changed; the log records what it was for.
