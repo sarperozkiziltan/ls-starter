@@ -4,11 +4,8 @@ studioVersion:
   patch: 1
   build: 26062503
   type: Public
-  buildFlavor: release
-  timestamp: 1782332287000
-  commit: 48a9c113a2c2fe7057f0893da6ea7ff55b6492ef
-coreVersion: 352
-clientVersion: 13.82
+coreVersion: 364
+clientVersion: 13.94
 updateCheckpoint: 101
 sceneId: 0a1ccb1a-fe88-4fbb-9883-e3af3c75fd99
 metaInfo:
@@ -16,7 +13,7 @@ metaInfo:
     []
   tags:
     []
-  lensName: Untitled
+  lensName: Template
   lensDescriptors:
     []
   lensApplicableContext:
@@ -28,7 +25,7 @@ metaInfo:
     - Back
   lensClientCompatibilities:
     - Mobile
-    - Web
+    - CameraKit
   platformBundlesEnabled: false
   iconHash: ""
   videoPreviewHash: ""
@@ -54,3 +51,4 @@ metaInfo:
   packageVersion: ""
   spkPrivilegeLevel: Generic
   gluboEnabled: false
+targetPlatform: Snapchat

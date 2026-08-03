@@ -8,6 +8,8 @@ This repository is a reusable Lens Studio starter template — every new Lens is
 
 Write all Lens scripts in **JavaScript** (ES2021), not TypeScript. Use `// @input` comment decorators for UI inputs and the global `script` object as the execution context.
 
+**Everything that goes into git is written in English** — code, comments, documentation, log entries, commit messages, and file names. Chat may be in Turkish, but nothing committed to the repository is. This template is shared across projects and read by people who do not speak Turkish.
+
 ## Where Scripts Go
 
 Create every new script in `Assets/Scripts/Custom Scripts/`.
@@ -63,3 +65,22 @@ Keep `print()` to a minimum. Log only essential state and events — initializat
 ## Asking Questions
 
 When a task is ambiguous, a requirement is unclear, or you need information you cannot get from the project itself, **ask**. Do not guess at intent and do not silently pick a direction — a short question up front is preferred over a wrong implementation.
+
+## Session Log
+
+A single Lens is built over weeks across many separate sessions, so `SESSION_LOG.md` carries the context that does not survive between them. Git history records what changed; the log records what it was for.
+
+**At the start of every session, read `SESSION_LOG.md` before touching anything.** It is the record of where the work left off.
+
+**The log belongs to the Lens, not to the template.** In this repository it stays empty apart from its heading skeleton — work done on the template itself is never logged. Entries only begin once this repository has been copied to build an actual Lens.
+
+**Whenever the user asks to commit and push, update `SESSION_LOG.md` as part of that same request**, before staging. Not on a plain commit without a push, and not on a push of already-logged work — the trigger is a commit + push of new work. Do not ask for permission to update the log; it is part of the job.
+
+Write one entry per session, newest at the top, dated absolutely (`## 2026-08-03`). Append to the existing entry if the session already has one today. Cover the four things that git cannot show on its own:
+
+- **Work done** — which scripts and assets were added or changed, and what each one is for.
+- **Decisions** — why an approach was chosen and what was rejected. This is the first thing forgotten and the most expensive to re-derive.
+- **Scene setup** — SceneObjects created, which script is attached to what, which inputs were wired in the Inspector, render target and hierarchy order changes. None of this is readable from the code.
+- **In progress** — unfinished work, known bugs, and the intended next step.
+
+Keep entries short and factual — a handful of bullets per heading, skipping any heading with nothing to report. Write what a stranger would need in order to continue, not a transcript of the conversation. Do not restate the conventions in this file, do not paste code, and do not log routine formatting passes. When an old entry has been fully superseded, fold it into a one-line summary rather than leaving a contradictory record standing.
