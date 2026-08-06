@@ -240,4 +240,17 @@ Assets/**/*.worldUnderstandingModule !filter !diff !merge text eol=lf linguist-l
 Packages/**/*.worldUnderstandingModule !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
 Assets/**/*.worldmesh !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
 Packages/**/*.worldmesh !filter !diff !merge text eol=lf linguist-language=yaml merge=lens-studio-yaml-merge
-* !text !filter !merge !diff
+# Keep this project out of Git LFS.
+#
+# Lens Studio's generated block above routes everything under Assets/ and
+# Packages/ through the LFS filter. This template holds only a couple of MB of
+# binary content, and a repository with LFS objects cannot be marked as a
+# GitHub template repository, so the filter is switched off here.
+#
+# These lines sit outside the generated block on purpose: Lens Studio rewrites
+# that block on every save, and the last matching rule wins, so the opt-out
+# survives and still takes effect. Only `filter` and `diff` are unset - the
+# `text`, `eol` and `merge=lens-studio-yaml-merge` attributes set above are
+# left alone.
+Assets/**/*   !filter !diff
+Packages/**/* !filter !diff
