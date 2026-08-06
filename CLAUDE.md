@@ -1,4 +1,5 @@
 @AGENTS.md
+@SCENE-SETUP-PLAYBOOK.md
 
 # Project Conventions
 
