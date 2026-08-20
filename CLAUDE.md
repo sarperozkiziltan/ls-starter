@@ -71,6 +71,8 @@ When a task is ambiguous, a requirement is unclear, or you need information you 
 
 Commit and push directly to `main`. Do not create branches and do not open pull requests — this is a single-maintainer repository with a linear history, so a review flow adds ceremony with no reviewer on the other end. Do not ask about branching each time; just commit and push when asked.
 
+**Never add a `Co-Authored-By` trailer, or any other AI attribution, to a commit message.** The message ends at its last content line. Commits carry the maintainer's own git identity regardless of who runs `git commit`, so this changes nothing about authorship — it only keeps Claude Code branding off the repository's history on GitHub.
+
 ## Session Log
 
 A single Lens is built over weeks across many separate sessions, so `SESSION_LOG.md` carries the context that does not survive between them. Git history records what changed; the log records what it was for.
