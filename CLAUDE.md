@@ -63,6 +63,44 @@ Group order and labels should tell the user how to use the script at a glance.
 
 Keep `print()` to a minimum. Log only essential state and events — initialization failures, missing input references, and meaningful state transitions. No per-frame logging, no step-by-step traces, and no leftover debug prints in delivered code.
 
+## README.md Is Off Limits
+
+**Never add anything to `README.md` unless explicitly asked to.** Not a section, not a line, not a note — no matter how relevant it seems or how well it would explain a change just made. This holds even when a task genuinely changes how the repository is laid out or used.
+
+`README.md` is the project's front page and the maintainer writes it. Documentation that feels like it belongs there almost always belongs somewhere else: engine facts go in `AGENTS.md`, project conventions here, scene technique in `SCENE-SETUP-PLAYBOOK.md`, and what was built and why in `SESSION_LOG.md`. If something seems to have no home but the README, say so and ask — do not write it there and leave the maintainer to trim it afterwards.
+
+### The one thing to raise: a missing version block
+
+There is a single exception, and it is still a question, never an edit.
+
+Every Lens repository's `README.md` opens with a `## Project` section carrying the Lens Studio version badge and the warning not to open the project in a newer version. Opening a project in a newer Lens Studio upgrades its files in place and cannot be undone, so that badge is what stops a whole project being lost to a careless double-click.
+
+**If the repository has a `README.md` and that block is missing, tell the user and ask whether to add it.** Ask — do not add it unasked.
+
+**A repository with no `README.md` at all is not a finding.** The README is written later in a project's life, so its absence early on is normal and must not be reported as an omission. The rule fires only on a README that exists and lacks the block.
+
+The block is written exactly like this:
+
+```markdown
+## Project
+
+<a href="https://ar.snap.com/download/v5-22-1"><img height="44" alt="Lens Studio 5.22.1 (build 26062503)" src="https://img.shields.io/badge/Lens%20Studio-5.22.1%20%28build%2026062503%29-FFFC00?style=for-the-badge&logo=snapchat&logoColor=black"></a>
+
+> [!IMPORTANT]
+> Open this project with the Lens Studio version listed above. Opening it in a newer
+> version upgrades the project files in place and cannot be undone.
+```
+
+Every value in it comes from `studioVersion` in the `.esproj` — never from memory, and never from the version of Lens Studio currently running. For a project reading `major: 5`, `minor: 22`, `patch: 1`, `build: 26062503`:
+
+| Placeholder | Source | Example |
+|---|---|---|
+| Version | `major.minor.patch` | `5.22.1` |
+| Download URL slug | the version with dashes | `v5-22-1` |
+| Build | `build` | `26062503` |
+
+Those values appear four times over — in the download link, in the `alt` text, and twice inside the badge URL, where spaces are `%20` and the parentheses are `%28` / `%29`. Nothing else in the block changes between projects.
+
 ## Asking Questions
 
 When a task is ambiguous, a requirement is unclear, or you need information you cannot get from the project itself, **ask**. Do not guess at intent and do not silently pick a direction — a short question up front is preferred over a wrong implementation.
