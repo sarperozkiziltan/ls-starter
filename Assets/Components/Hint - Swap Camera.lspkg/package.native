@@ -1,0 +1,42 @@
+- !<NativePackageDescriptor/797f29a6-9fd1-498e-94f4-e38b01828973>
+  PackagePath: ""
+  StudioVersion:
+    major: 5
+    minor: 22
+    patch: 1
+    build: 26062503
+    type: Unset
+    buildFlavor: ""
+    timestamp: 0
+    commit: ""
+  Description: |-
+    Swap Camera Provides an animated graphic hint and a helper script that allows to configure hint behavior
+    
+    Usage:
+    Drag and drop the asset "Hint - Swap Camera__PUT_IN_ORTHO_CAM" into your scene, under the Orthographic Camera. The hint will start playing automatically when the Lens is opened.
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  VersionMajor: 1
+  VersionMinor: 0
+  VersionPatch: 0
+  UpdateCheckpoint: 101
+  ExportUid: f88ad8f5-cb79-45b9-91cd-ff3a65f48631
+  ComponentUid: 6c8d02a7-9aa2-4d4f-bf06-f615a15aaf43
+  PackagePolicy: CanBeUnpackedTransparent
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  VersionPrerelease: ""
+  Instantiable: !<reference> 00000000-0000-0000-0000-000000000000
+  AssetLibraryDependencyStructure: !<AssetLibraryDependencyStructure>
+    Name: ""
+    AssetId: ""
+    Hash: ""
+    Version:
+      major: 0
+      minor: 0
+      patch: 0
+      build: 0
