@@ -586,6 +586,70 @@ sceneObject.createComponent("Component.InteractionComponent");
 On a screen image that is the whole job — the component picks up the ScreenTransform's area
 automatically. Do **not** call `addMeshVisual`; that is for mesh-based hit testing in 3D.
 
+### R8 — Replacing a gradient texture with the gradient shader
+
+A gradient exported as a PNG almost always arrives as an 8 bit **indexed** image — the Hilton
+`Gradient.png` carried 17 palette entries for a 346 px fade — and 17 alpha steps over that many
+pixels band visibly. `gradient shader.graphShader` computes the ramp per pixel and dithers it
+instead. Matching it to the texture it replaces is a measurement, not an eyeball.
+
+#### 1. Measure the texture's alpha, row by row
+
+Decode the PNG and **average each row's alpha across the full width**. A single column is useless
+here: the exporter dithers horizontally, so one column reads as a staircase while the row mean
+recovers the curve the designer actually drew. `zlib` + `struct` in `python3` is enough; no
+Pillow, and no opening the file in an editor.
+
+#### 2. Map texture rows onto *screen* fractions
+
+The shader runs as a fullscreen `PostEffectVisual`, so its `y` is 0 at the top of the **screen**
+and 1 at the bottom — not 0..1 across the texture. A 720 × 346 image placed `Fit` + `Top` in a
+full frame region covers rows 0..345 of the 1280 px canvas, so
+
+```
+screen_y = texture_row / 1280
+```
+
+Feeding it texture fractions instead is what makes the ramp finish at a third of its proper
+height while every number still looks plausible.
+
+#### 3. Fit against the shader's own formula
+
+Read the formula out of the graph shader rather than inferring it from the input names:
+
+```
+t     = clamp((y - alphaStart) / (alphaEnd - alphaStart), 0, 1)
+alpha = mix(alphaTop, alphaBottom, pow(t, alphaCurve))
+```
+
+So `alphaTop` is the texture's peak alpha, `alphaEnd` the screen fraction where it reaches zero,
+and `alphaCurve` the only shape control. Least-squares `alphaEnd` and `alphaCurve` against the
+measured profile; keep `alphaTop` pinned to the measured peak rather than letting the fit move it,
+since the top edge is the most visible part of the ramp.
+
+**`pow` bends once, not twice.** Above 1 it flattens the top, below 1 it lengthens the tail, and
+no value does both. Source gradients drawn with an ease-in-out therefore land on `alphaCurve = 1`
+with a residual in the faint tail. Accept it — a 7 % deviation at 5 % alpha is invisible, and
+chasing it costs the top of the ramp.
+
+#### 4. The settings that are not part of the fit
+
+- **Turn `depthTest` off.** The screen image's material has it off, and a fullscreen post effect
+  quad with depth testing on can be occluded by 3D geometry that never touched the 2D UI version.
+- **The colour swatches' alpha is unused** — the shader reads `.rgb` only. Zeroing Color Mid /
+  Color Bottom alpha is harmless and changes nothing.
+- **`midPosition` is inert when all three colour stops are the same**, which is the case for any
+  single-colour fade.
+- **Leave `ditherAmount` alone.** It is the anti-banding that motivated the swap in the first place.
+
+#### 5. Prove it renders before trusting any number
+
+Set `alphaEnd = 1.0` once and capture. The ramp must cover the whole screen and be strongest at
+the top — that confirms both that the post effect renders at all and that `flipVertical` puts
+`y = 0` at the top. Then put the fitted value back. Skip this and a gradient that is silently not
+rendering is indistinguishable from one whose span is simply wrong; both read as "nothing at the
+top of the frame".
+
 ### R3 — Capture the preview
 
 `PreviewPanelTool(screenshot)` fails on this install ("requires the tryScreenshot API,
