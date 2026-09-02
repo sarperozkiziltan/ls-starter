@@ -860,6 +860,13 @@ print(c && c.getTypeName());   // → "Component.InteractionComponent"
 Delete the temporary `print` in the same turn you added it. A tool's summary view is evidence,
 not proof; the runtime's own answer is proof.
 
+The same trap sits in `.virtual-scene.json`: **some components serialize with a numeric `type`**
+rather than the string you expect. `TweenScreenTransform` comes through as `"type": 3`, so a scan
+written as `if (c.type !== "ScriptComponent") continue` drops every Tween component silently and
+the scene looks like it is missing tweens the user can plainly see in the Inspector. Cross-check
+a "component is missing" conclusion against `Assets/Scene.scene` — `grep -c "<tweenName>"` on the
+saved scene answers it in one line and costs nothing.
+
 **P12 — I blamed the outline for a washed-out text that a translucent image was covering.**
 A percentage placed *after* its result box in the hierarchy still drew **beneath** the box's
 translucent white, and the navy read as pale slate. I concluded that Lens Studio's Text outline
