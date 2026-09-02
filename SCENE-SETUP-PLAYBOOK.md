@@ -264,9 +264,13 @@ into the root of `Assets/`:
 
 | Litter | What to do |
 |---|---|
-| `Image.mat` | Rename to the texture name, `moveAsset` → `Materials & Shaders/Materials` |
+| `Image.mat` | Rename to the texture name, `moveAsset` → `Materials & Shaders` |
 | `flat.graphShader` | **First image only** — the preset reuses the existing shader afterwards. `moveAsset` → `Materials & Shaders`; the material's pass depends on it, so move, never delete |
 | `Image.png` | Placeholder texture, unused once the real texture is assigned — `deleteAsset` (a fresh one is dropped on *every* creation) |
+
+Materials sit **directly in `Materials & Shaders/`**, alongside the shaders they depend on —
+there is no `Materials` subfolder. One folder for both is enough at the handful of materials a
+Lens carries, and it keeps a material next to the shader whose pass it points at.
 
 Find the litter by id without guessing: `assetByPath(path: "Image.png")`, `assetByPath(path: "Image.mat")`.
 
@@ -296,11 +300,20 @@ Anything else in that listing is unfinished work.
 to the other two by name alone. (The Smart Scaler plugin enforces this automatically; match it
 by hand when working through MCP.)
 
+**One texture used twice takes a suffix naming what separates the instances** —
+`Question-Selfie` and `Question-World`, never two objects both called `Question`. Two reasons,
+either sufficient on its own: two materials cannot share a name in one folder, so Lens Studio
+quietly hands you `Question 2` and the object/material link is broken; and a Fader registers
+itself under its SceneObject's name, so duplicate names leave `faderManager` unable to resolve
+either one. Suffix the object and its material identically and the texture is still traceable
+from both.
+
 | Topic | Convention | Learned on |
 |---|---|---|
 | 2D UI parent | `2D  UI` → `Full Frame Region - Global` → `Global` (default) / `Selfie` / `World` | 2026-08-06 |
 | Object + material naming | Both named after the texture (`TD-Bank_Logo`) | 2026-08-06 |
-| Material location | `Materials & Shaders/Materials` | 2026-08-06 |
+| One texture, two instances | Suffix both by what differs (`Question-Selfie` / `Question-World`) | 2026-09-02 |
+| Material location | `Materials & Shaders` — flat, no `Materials` subfolder | 2026-09-02 |
 | Screen image scale | `±texture_width / 720` on left/right — native pixel size, never eyeballed | 2026-08-06 |
 | Layer choice | `2D UI` (mask 4) for captured content, `Hint Camera` (mask 2) for hints/CTAs | 2026-08-06 |
 | Logo render order | Always `99` — above everything | 2026-08-06 |
