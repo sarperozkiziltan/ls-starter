@@ -31,15 +31,19 @@
 
 ## 1. Where the Storyboard Lives
 
-Storyboards are kept in the repo at `Docs/Storyboard/`, named `YYYY-MM-DD_storyboard-vN.png`.
+Storyboards are kept in the repo at `Docs/Storyboard/`, named for what they contain and
+nothing else — `Storyboard.png`, `Score Result Logic.png`. No date, no version suffix, no
+export timestamp; strip whatever the export tool appended.
 
 - **Never** put reference images under `Assets/` — Lens Studio scans that directory and imports
   any image there as a texture, polluting the asset library.
 - Screenshots pasted into chat live in a macOS temp folder that gets deleted; copy them into
   `Docs/Storyboard/` immediately so they survive the session.
-- **At the start of any scene work, read the newest storyboard in `Docs/Storyboard/` first.**
-  When the user revises it, save a new `-vN` rather than overwriting — old versions explain
-  why earlier decisions were made.
+- **At the start of any scene work, read every file in `Docs/Storyboard/`.** The folder is small
+  and each file covers a different part of the spec — layout, scoring, copy — so there is no
+  "newest one" to pick.
+- **A revision overwrites the file it replaces.** Git history keeps the old version; a folder of
+  `-v1`, `-v2`, `-v3` only creates the question of which one is current.
 
 ---
 
@@ -91,7 +95,7 @@ the name), never under `Camera 3D`. The template ships this hierarchy:
 alongside the selfie frames; **diff them**. An element drawn in both is `Global`; an element
 drawn only in the selfie frames is `Selfie`; one drawn only in the world frame is `World`.
 
-Worked example from `2026-08-06_storyboard-v1`:
+Worked example from an earlier project's storyboard:
 
 | Element | Selfie frames | World frame | → Parent |
 |---|---|---|---|
