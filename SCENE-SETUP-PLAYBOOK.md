@@ -663,6 +663,131 @@ the top — that confirms both that the post effect renders at all and that `fli
 rendering is indistinguishable from one whose span is simply wrong; both read as "nothing at the
 top of the frame".
 
+### R9 — Screen text from a storyboard's type spec
+
+A storyboard hands over type as Photoshop settings — *"Graduate (size 36) #0c3265, add #0c3265
+stroke (centered): 3, then white stroke behind (centered): 13"*. The colour transfers directly.
+The size does not, and the strokes need reading carefully.
+
+#### Size comes from the measured ink, not from the stated point size
+
+The stated point size is in whatever scale the designer's mockup used, and scaling it by
+`720 / frame_width` is only a sanity check — on the Hilton board it came out **15 % too large**
+and had to be corrected after the user called it. Derive the size from the drawing instead:
+
+1. Measure the element's **ink width** in the storyboard frame, in frame px.
+2. Convert: `design_px = frame_px × 720 / frame_width`.
+3. Solve for the em using the font's own advance widths, read straight out of the `.ttf`
+   (`cmap` → glyph ids, `hmtx` → advances; `head.unitsPerEm` to normalise).
+
+```
+em = ink_width_design_px / (advance_sum_in_em × ink_over_advance)
+```
+
+`ink_over_advance` covers the side bearings — measure it once against a rendering of the same
+font you already trust, then reuse it. **A glyph baked into a placed texture is the ideal ruler**:
+`Result.png` carries "SUPERSTITIOUS!" set in Graduate, so its ink width and cap height calibrate
+the whole chain for free, and its cap height confirms `OS/2.sCapHeight`.
+
+*Worked example — the percentage.* Graduate advances for `98%` are 650 + 650 + 940 = 2.24 em.
+Storyboard ink 66 frame px → 153 design px. `SUPERSTITIOUS!` in the texture gives
+`ink_over_advance = 0.923`. So `em = 153 / (2.24 × 0.923) = 74` design px → `Text.size` **57**
+at the editor's size factor of ~1.27 design px per unit. The stated "size 36" would have given 66.
+
+Measure a **width**, never a height. A height read off a threshold scan swallows the stroke and
+the anti-aliasing and came out 12 % wrong in both directions on the same board; a width spans
+many more pixels and is far less sensitive to the cut-off.
+
+#### The outline grows outward, so "stroke behind" transfers directly
+
+`outlineSettings` draws **outside** the glyph. Enable it, set `outlineSettings.fill.color` to the
+halo colour and `outlineSettings.size` to the halo width as a fraction of the em — the design's
+"white stroke (centered) 13" is ~18 px outward on a 74 px em, i.e. `0.25`, which is also the
+default.
+
+**One Text component carries one stroke, so a two-stroke spec needs two Texts nested.** A spec
+that reads *"add #0c3265 stroke 3, then add white stroke behind 13"* is two rings, and dropping
+the inner one — as a single outline forces you to — does not match the reference closely enough
+to ship. The user rebuilt the Hilton percentage as a pair of stacked Texts after a single
+component came up short. Budget for the pair from the start on any two-stroke element, and
+remember both copies need their string set at runtime.
+
+#### Colour is sRGB, the same numbers the picker shows
+
+`setProperty(..., "textFill.color", VEC4)` takes sRGB components, so `#0C3265` is
+`(0.047059, 0.196078, 0.396078, 1)`. Converting to linear first is wrong. Verify against the same
+colour baked into a neighbouring texture; they must match exactly.
+
+#### Capitalisation belongs in the component, not the string
+
+Where the design is all-caps but the copy deck is sentence case, set
+`capitalizationOverride: AllUpper` and feed the string exactly as the copy deck writes it. The
+runtime never has to know about the design's casing, and the copy stays greppable against its
+source document.
+
+### R10 — Confetti, and faking depth around the segmented user
+
+Confetti that bursts around the user is **two** GPU particle systems, not one. The `User`
+segmentation post effect is a flat full-screen composite with no depth of its own, so 3D depth
+cannot put particles behind the person — only **render order** can:
+
+```
+Camera 3D / Selfie
+├─ BG                    PostEffectVisual   renderOrder -3
+├─ GPU Particles Back    RenderMeshVisual   renderOrder -1   ← drawn before the user composite
+├─ User                  PostEffectVisual   renderOrder  0
+├─ Retouch               RetouchVisual      renderOrder  1
+├─ Head Binding / …
+└─ GPU Particles Front   RenderMeshVisual   renderOrder  5   ← drawn after it
+```
+
+Both systems are identical apart from that number. The back one is composited over by the
+segmented person, the front one passes in front of them, and the two together read as confetti
+falling *around* the user.
+
+**Hierarchy order does not settle this** — the same lesson as P12. A single system left at
+`renderOrder 0`, tying with `User`, rendered nothing at all no matter what else was tuned.
+
+#### The emitter belongs near the camera, not at the subject
+
+Place it at **z ≈ -10** with the subject at z ≈ -64. At that depth the frame is only ~12 units
+tall, so the numbers below are small on purpose — they are not a "gentle" effect, they are
+correctly scaled for a near-camera emitter. Re-deriving them for an emitter at the subject's depth
+means multiplying every distance by roughly 5.5.
+
+#### Working settings
+
+Object at `(0, 12, -10)`, layer 16, mesh `Misc/GPUParticlesMesh.mesh`, one material each:
+
+| | |
+|---|---|
+| Mesh Type / Space | `Quad` / `Local Space` |
+| Lifetime | `lifeTimeConstant` **5** — not the Min/Max variant |
+| Spawn | **every spawn define off** — no `INSTANTSPAWN`, no `CONSTANTSPAWN`, no box or sphere |
+| Flipbook | on, grid `4 × 4`, `numValidFrames` **1**, speed **5**, random start **0.3** |
+| Velocity | min `(-3, 0, 0)` max `(3, 0, 0)` — horizontal drift only, gravity does the falling |
+| Gravity | **-7** |
+| Size | start and end `(1, 1)` |
+| Rotation | rate `(0, 0)`, initial random `(-1, 1)` |
+| Alpha | start 1, end 1 — the Fader owns the fade, so the material must not fade on its own |
+| Count | `instanceCount` **60** per system |
+| Depth / blend | `depthWrite` off, `depthTest` on, two-sided, `PremultipliedAlphaAuto` |
+
+Reaching for `INSTANTSPAWN` to get a "burst" is the wrong instinct: it fires once at Lens start,
+long before the result screen exists, and leaves nothing to see. The burst is produced by the
+**Fader** instead — see below.
+
+#### The Fader drives it, and the parameter is `particles`
+
+Each system carries its own Fader with `initialState: hidden`, `inMode`/`outMode` `fade`, and —
+the part that is specific to particles — **`inFadeMaterialParameter` and
+`outFadeMaterialParameter` both set to `particles`**, not the default `baseColor`. A particle
+material has no `baseColor` to write into; `Fader.js` has a branch that writes the alpha into the
+lifetime parameters instead. In / out times of 0.5 s and 0.25 s read well for a confetti burst.
+
+Leave both objects **enabled**; `initialState: hidden` keeps them invisible until
+`faderManager.show()` fires, and the system keeps simulating in the meantime.
+
 ### R3 — Capture the preview
 
 `PreviewPanelTool(screenshot)` fails on this install ("requires the tryScreenshot API,
@@ -734,6 +859,27 @@ print(c && c.getTypeName());   // → "Component.InteractionComponent"
 
 Delete the temporary `print` in the same turn you added it. A tool's summary view is evidence,
 not proof; the runtime's own answer is proof.
+
+**P12 — I blamed the outline for a washed-out text that a translucent image was covering.**
+A percentage placed *after* its result box in the hierarchy still drew **beneath** the box's
+translucent white, and the navy read as pale slate. I concluded that Lens Studio's Text outline
+must be drawn inset, turned the outline off, and wrote that into this file as a rule — then spent
+two more rounds on colour space. Both were wrong: hierarchy order does not settle Text against
+Image, and `renderOrder = 1` on the Text fixed it completely, outline and all.
+**Rule:** when a Text looks washed out, wrong-coloured, or hollow over another element, **suspect
+the draw order before the material** — set an explicit `renderOrder` above whatever it sits on and
+re-capture. And do not write a mechanism into this file until the fix has actually proven it; a
+wrong rule in the template costs more than a missing one.
+
+**P13 — I built one confetti system at `renderOrder 0` and it rendered nothing, ever.**
+It sat at the subject's depth with an instant-spawn burst, competing with the `User` segmentation
+post effect at the same render order. I ruled out spawn timing (constant spawn was equally
+invisible), the flipbook (disabling it changed nothing) and the object's placement (runtime bounds
+confirmed it was in frustum), then handed the task over — and the user's working version differed
+in exactly the thing I had not questioned: two systems at `renderOrder -1` and `5`, straddling
+the segmentation composite. **Rule:** anything sharing `Camera 3D / Selfie` with the `User` post
+effect must state its `renderOrder` relative to it. Zero is not a neutral value there, it is a tie
+with the thing that paints the whole person over the frame.
 
 **P10 — I guessed a Lens API signature and shipped `global.scene.copySceneObject(...)`.**
 It threw `TypeError: not a function`; the method belongs to `SceneObject`, not the scene.
