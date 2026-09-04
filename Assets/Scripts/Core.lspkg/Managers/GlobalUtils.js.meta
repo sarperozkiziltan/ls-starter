@@ -1,0 +1,63 @@
+- !<AssetImportMetadata/340798c2-d064-8b92-312e-ea10758fffc9>
+  ImportedAssetIds:
+    JavaScriptAsset: !<reference> cc3aa104-7e48-4b0a-82e7-de5e7fdac08e
+  ImporterName: JavaScriptAssetImporter
+  PrimaryAsset: !<reference> cc3aa104-7e48-4b0a-82e7-de5e7fdac08e
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    JavaScriptAsset: !<own> 7bde3738-e9a8-47a9-b487-3146a8fff512
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScriptAssetData/7bde3738-e9a8-47a9-b487-3146a8fff512>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  ComponentUid: ff8e5229-0d9d-4e42-ac2b-592c5f004657
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    advancedOptions: false
+    loadArrayUtils: false
+    loadAsyncUtils: false
+    loadColorUtils: false
+    loadComponentUtils: false
+    loadMathUtils: false
+    loadObjectUtils: false
+    loadRandomUtils: false
+    loadSceneUtils: false
+    loadScreenUtils: false
+    loadStringUtils: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - advancedOptions: false
+      loadArrayUtils: true
+      loadAsyncUtils: true
+      loadColorUtils: true
+      loadComponentUtils: true
+      loadMathUtils: true
+      loadObjectUtils: true
+      loadRandomUtils: true
+      loadSceneUtils: true
+      loadScreenUtils: true
+      loadStringUtils: true
+  ScriptTypes:
+    -
+      {}

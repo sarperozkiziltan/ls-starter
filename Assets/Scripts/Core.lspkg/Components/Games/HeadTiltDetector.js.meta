@@ -1,0 +1,81 @@
+- !<AssetImportMetadata/58a2c2e2-5e91-27ef-1f89-ef823d281dde>
+  ImportedAssetIds:
+    JavaScriptAsset: !<reference> 2ebde171-1b38-41e5-8f01-62f0f72e1ae4
+  ImporterName: JavaScriptAssetImporter
+  PrimaryAsset: !<reference> 2ebde171-1b38-41e5-8f01-62f0f72e1ae4
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    JavaScriptAsset: !<own> d7cbc612-733f-45c7-a4a6-11c58f7fe8a7
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScriptAssetData/d7cbc612-733f-45c7-a4a6-11c58f7fe8a7>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  ComponentUid: c2ab564e-3911-40ed-a1aa-d797a8c61e07
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    activationThreshold: false
+    advancedOptions: false
+    callbackType: false
+    commitThreshold: false
+    cooldownDuration: false
+    customScript: false
+    detectionEnabled: false
+    enableCallbacks: false
+    enableLogging: false
+    head: false
+    holdDuration: false
+    neutralZone: false
+    onTiltDecisionFunctionName: false
+    onTiltDecisionGlobalName: false
+    onTiltUpdateFunctionName: false
+    onTiltUpdateGlobalName: false
+    quickTiltMultiplier: false
+    smoothingFactor: false
+    trackUpdates: false
+    velocityInfluence: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - head: !<reference.Head> 00000000-0000-0000-0000-000000000000
+      detectionEnabled: true
+      activationThreshold: 0.200000
+      commitThreshold: 0.300000
+      neutralZone: 0.100000
+      holdDuration: 0.200000
+      cooldownDuration: 0.250000
+      smoothingFactor: 0.400000
+      velocityInfluence: 0.500000
+      quickTiltMultiplier: 1.300000
+      enableCallbacks: false
+      callbackType: 0
+      onTiltUpdateGlobalName: ""
+      onTiltDecisionGlobalName: ""
+      customScript: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
+      onTiltUpdateFunctionName: ""
+      onTiltDecisionFunctionName: ""
+      advancedOptions: false
+      trackUpdates: true
+      enableLogging: false
+  ScriptTypes:
+    -
+      {}

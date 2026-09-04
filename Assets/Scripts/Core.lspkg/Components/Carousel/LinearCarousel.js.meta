@@ -1,0 +1,87 @@
+- !<AssetImportMetadata/8be1e820-d4be-dab9-cd8f-f5b4d74b7912>
+  ImportedAssetIds:
+    JavaScriptAsset: !<reference> 5dbcb4dd-a753-4ed4-9bbe-c2b59abf5d80
+  ImporterName: JavaScriptAssetImporter
+  PrimaryAsset: !<reference> 5dbcb4dd-a753-4ed4-9bbe-c2b59abf5d80
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    JavaScriptAsset: !<own> c31273ba-f171-470f-a209-1447054dd270
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScriptAssetData/c31273ba-f171-470f-a209-1447054dd270>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  ComponentUid: 9669f294-4d33-4f1f-985f-42affa97c3e4
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    animationSpeed: false
+    callbackOnStart: false
+    callbackType: false
+    customScript: false
+    direction: false
+    dragArea: false
+    elementTemplate: false
+    elements: false
+    enableCallbacks: false
+    enableLogging: false
+    enableTapToSelect: false
+    interactionCutoff: false
+    onSelectFunction: false
+    onSelectGlobalFunction: false
+    selectAudioTrack: false
+    spacing: false
+    spawnParent: false
+    spawnedCarousel: false
+    startingIndex: false
+    swipeSensitivity: false
+    textures: false
+    wrapBuffer: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - startingIndex: 0
+      spacing: 0.300000
+      direction: horizontal
+      animationSpeed: !<float> 8.000000
+      spawnedCarousel: false
+      elementTemplate: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      spawnParent: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      textures: !<reference.Texture[]>
+        []
+      elements: !<reference.SceneObject[]>
+        []
+      dragArea: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      swipeSensitivity: !<float> 2.000000
+      enableTapToSelect: true
+      interactionCutoff: 2.500000
+      wrapBuffer: !<float> 0.000000
+      enableCallbacks: false
+      callbackType: 0
+      onSelectGlobalFunction: ""
+      customScript: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
+      onSelectFunction: ""
+      callbackOnStart: true
+      selectAudioTrack: !<reference.AudioTrackAsset> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+  ScriptTypes:
+    -
+      {}

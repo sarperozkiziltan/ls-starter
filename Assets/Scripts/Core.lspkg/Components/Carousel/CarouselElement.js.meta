@@ -1,0 +1,89 @@
+- !<AssetImportMetadata/06c56b5f-3a02-680d-4a28-eec104d287f7>
+  ImportedAssetIds:
+    JavaScriptAsset: !<reference> 767cd37a-7c2e-4533-a488-b5a95be57060
+  ImporterName: JavaScriptAssetImporter
+  PrimaryAsset: !<reference> 767cd37a-7c2e-4533-a488-b5a95be57060
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    JavaScriptAsset: !<own> 1fc83f9a-fdb5-4aba-996e-39abab850873
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScriptAssetData/1fc83f9a-fdb5-4aba-996e-39abab850873>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  ComponentUid: a360f9e6-059c-4bad-8ea5-17062954bd44
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    advanced: false
+    baseRenderOrder: false
+    centerOpacity: false
+    centerScale: false
+    customFunctionName: false
+    customVisualScript: false
+    easeOpacity: false
+    easeScale: false
+    edgeOpacity: false
+    edgeScale: false
+    enableCustomVisuals: false
+    enableLogging: false
+    enableOpacity: false
+    enableRenderOrder: false
+    enableRotation: false
+    enableScaling: false
+    imageComponent: false
+    makeMaterialUnique: false
+    maxRotation: false
+    opacityDistance: false
+    renderOrderRange: false
+    rotationDistance: false
+    scaleDistance: false
+    screenTransform: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - enableScaling: true
+      centerScale: !<float> 1.000000
+      edgeScale: 0.700000
+      scaleDistance: !<float> 2.000000
+      easeScale: true
+      enableOpacity: true
+      centerOpacity: !<float> 1.000000
+      edgeOpacity: 0.500000
+      opacityDistance: !<float> 2.000000
+      easeOpacity: true
+      enableRotation: false
+      maxRotation: !<float> 30.000000
+      rotationDistance: !<float> 1.000000
+      enableRenderOrder: false
+      baseRenderOrder: 0
+      renderOrderRange: 10
+      enableCustomVisuals: false
+      customVisualScript: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
+      customFunctionName: onDistanceUpdate
+      advanced: false
+      screenTransform: !<reference.ScreenTransform> 00000000-0000-0000-0000-000000000000
+      imageComponent: !<reference.Image> 00000000-0000-0000-0000-000000000000
+      makeMaterialUnique: true
+      enableLogging: false
+  ScriptTypes:
+    -
+      {}

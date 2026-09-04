@@ -1,0 +1,82 @@
+- !<AssetImportMetadata/10ba9b73-0664-816c-4a5a-8ffbd636b288>
+  ImportedAssetIds:
+    JavaScriptAsset: !<reference> cc3aa4dd-8704-4929-abe8-82b597f17757
+  ImporterName: JavaScriptAssetImporter
+  PrimaryAsset: !<reference> cc3aa4dd-8704-4929-abe8-82b597f17757
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    JavaScriptAsset: !<own> 1d390bb5-722b-4b4d-9060-a39b57d75ffa
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScriptAssetData/1d390bb5-722b-4b4d-9060-a39b57d75ffa>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  ComponentUid: 09e1d7f7-7c13-4598-aa9c-ee166fab2421
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    amountVariationRot: false
+    amountVariationX: false
+    amountVariationY: false
+    bobAmountX: false
+    bobAmountY: false
+    bobSpeedX: false
+    bobSpeedY: false
+    camera: false
+    enableHorizontal: false
+    enableLogging: false
+    enableRotation: false
+    enableVertical: false
+    randomizeOnStart: false
+    rotationAmount: false
+    rotationSpeed: false
+    runOnStart: false
+    screenTransforms: false
+    speedVariationRot: false
+    speedVariationX: false
+    speedVariationY: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - screenTransforms: !<reference.ScreenTransform[]>
+        []
+      camera: !<reference.Camera> 00000000-0000-0000-0000-000000000000
+      enableVertical: true
+      bobSpeedY: !<float> 1.000000
+      bobAmountY: 0.050000
+      speedVariationY: 0.500000
+      amountVariationY: 0.300000
+      enableHorizontal: true
+      bobSpeedX: 0.800000
+      bobAmountX: 0.040000
+      speedVariationX: 0.500000
+      amountVariationX: 0.300000
+      enableRotation: true
+      rotationSpeed: 0.300000
+      rotationAmount: !<float> 5.000000
+      speedVariationRot: 0.500000
+      amountVariationRot: 0.300000
+      randomizeOnStart: true
+      runOnStart: true
+      enableLogging: false
+  ScriptTypes:
+    -
+      {}

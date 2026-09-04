@@ -1,0 +1,73 @@
+- !<AssetImportMetadata/83c3cfc7-4f0b-b6af-3b38-e86359661dcb>
+  ImportedAssetIds:
+    JavaScriptAsset: !<reference> 8e3c6ebc-7c68-4ca2-8b41-a16bec8f0c45
+  ImporterName: JavaScriptAssetImporter
+  PrimaryAsset: !<reference> 8e3c6ebc-7c68-4ca2-8b41-a16bec8f0c45
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    JavaScriptAsset: !<own> f8b5604a-30b8-4943-9043-c7c1f2ece14c
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScriptAssetData/f8b5604a-30b8-4943-9043-c7c1f2ece14c>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  ComponentUid: 5649db0e-7fc4-4a55-86a3-471ca1f71cad
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    editAdvancedOptions: false
+    enableHighScoreTracking: false
+    highScoreStorageKey: false
+    highScoreText3DComponent: false
+    highScoreTextComponent: false
+    maxScore: false
+    minScore: false
+    multiplier: false
+    padding: false
+    prefix: false
+    printDebugStatements: false
+    printWarningStatements: false
+    suffix: false
+    text3DComponent: false
+    textComponent: false
+    useMaxScore: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - prefix: ""
+      suffix: ""
+      padding: 0
+      minScore: 0
+      useMaxScore: false
+      maxScore: 100
+      multiplier: !<float> 1.000000
+      textComponent: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      text3DComponent: !<reference.Text3D> 00000000-0000-0000-0000-000000000000
+      enableHighScoreTracking: false
+      highScoreStorageKey: highScore
+      highScoreTextComponent: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      highScoreText3DComponent: !<reference.Text3D> 00000000-0000-0000-0000-000000000000
+      editAdvancedOptions: false
+      printDebugStatements: false
+      printWarningStatements: true
+  ScriptTypes:
+    -
+      {}

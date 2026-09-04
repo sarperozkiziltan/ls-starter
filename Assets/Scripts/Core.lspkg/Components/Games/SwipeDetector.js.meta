@@ -1,0 +1,73 @@
+- !<AssetImportMetadata/f81c201d-f23b-a249-3c7b-a71440119372>
+  ImportedAssetIds:
+    JavaScriptAsset: !<reference> 8c5f039e-565a-4d95-b9ac-55f2bd5218c0
+  ImporterName: JavaScriptAssetImporter
+  PrimaryAsset: !<reference> 8c5f039e-565a-4d95-b9ac-55f2bd5218c0
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    JavaScriptAsset: !<own> 48af9636-c7ce-450e-8e9e-8fe9ef7859db
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScriptAssetData/48af9636-c7ce-450e-8e9e-8fe9ef7859db>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  ComponentUid: 448b4804-5d37-4eab-816d-5e62965a7e06
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    advancedOptions: false
+    callbackType: false
+    customScript: false
+    detectionEnabled: false
+    enableCallbacks: false
+    enableLogging: false
+    maxSwipeTime: false
+    minSwipeDistance: false
+    onSwipeEndFunctionName: false
+    onSwipeEndGlobalName: false
+    onSwipeStartFunctionName: false
+    onSwipeStartGlobalName: false
+    onSwipeUpdateFunctionName: false
+    onSwipeUpdateGlobalName: false
+    touchBlockingEnabled: false
+    trackUpdates: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - detectionEnabled: true
+      maxSwipeTime: 0.500000
+      minSwipeDistance: 0.100000
+      enableCallbacks: false
+      callbackType: 0
+      onSwipeStartGlobalName: ""
+      onSwipeUpdateGlobalName: ""
+      onSwipeEndGlobalName: ""
+      customScript: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
+      onSwipeStartFunctionName: ""
+      onSwipeUpdateFunctionName: ""
+      onSwipeEndFunctionName: ""
+      advancedOptions: false
+      touchBlockingEnabled: false
+      trackUpdates: true
+      enableLogging: false
+  ScriptTypes:
+    -
+      {}

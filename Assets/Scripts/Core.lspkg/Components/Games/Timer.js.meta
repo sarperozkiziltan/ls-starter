@@ -1,0 +1,59 @@
+- !<AssetImportMetadata/46487f18-b5c7-7306-55c4-b8602883cf27>
+  ImportedAssetIds:
+    JavaScriptAsset: !<reference> 85d798f4-f5e7-43f1-ab4c-df99e331d418
+  ImporterName: JavaScriptAssetImporter
+  PrimaryAsset: !<reference> 85d798f4-f5e7-43f1-ab4c-df99e331d418
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    JavaScriptAsset: !<own> 4bbde66a-dc02-4051-be27-185cfa50dc57
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScriptAssetData/4bbde66a-dc02-4051-be27-185cfa50dc57>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  ComponentUid: 440a4105-167a-4f22-bb50-1bcf1aa9f3d9
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    countdown: false
+    editAdvancedOptions: false
+    format: false
+    maxTime: false
+    printDebugStatements: false
+    printWarningStatements: false
+    text3DComponent: false
+    textComponent: false
+    tickInterval: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - maxTime: !<float> 10.000000
+      tickInterval: !<float> 1.000000
+      countdown: true
+      format: ss
+      textComponent: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      text3DComponent: !<reference.Text3D> 00000000-0000-0000-0000-000000000000
+      editAdvancedOptions: false
+      printDebugStatements: false
+      printWarningStatements: true
+  ScriptTypes:
+    -
+      {}
