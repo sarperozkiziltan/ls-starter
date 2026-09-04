@@ -251,6 +251,43 @@ effects that idle for a long time before appearing. Do **not** reach for `disabl
 avoid that cost — combined with `initialState: "hidden"` it disables the object during init and
 the effect can never be shown again.
 
+#### Fading a VFX Component
+
+A **VFX Component** is not the same thing as GPU Particles, and it does not fade the same way.
+GPU Particles are a `RenderMeshVisual` carrying a particle material, which is why the `particles`
+branch above reaches them at all. A VFX Component is its own component type driving a
+`.graphVfx`, it has no `mainPass`, and `Fader.js` collects only `RenderMeshVisual`, `Image`,
+`Text3D` and `PostEffectVisual` — so before this template's own change a Fader on a VFX did
+nothing at all, silently, whatever the Parameter was set to.
+
+`Fader.js` now handles `VFXComponent` too, by writing the alpha into a **Float Parameter on the
+VFX graph** instead of a material pass. Two steps:
+
+1. **In the graph:** add a `Float Parameter` node named `opacity`, default 1, and wire its
+   `Value.x` into `Set Alpha ( by Age )` → `Start Alpha` and `End Alpha`. Both are `.x` floats,
+   so no conversion is needed. Do not reach for `Set Color`, which is rgb — alpha is a separate
+   channel in a separate block. The parameter then also appears in the VFX Component's Inspector,
+   the same way `groundHeight` does on the Snow VFX.
+2. **On the Fader:** leave the Parameter field alone. `baseColor` and `particles` both fall back
+   to `opacity`, so a Fader dropped on a VFX works as it comes. A parameter under a different
+   name is typed into the field instead. When the graph exposes none of the candidates the Fader
+   warns once — *"VFX graph on X has no 'particles' or 'opacity' parameter to fade"* — rather
+   than failing silently.
+
+**Wiring `opacity` straight into Start and End Alpha replaces the by-age alpha animation.** That
+is free when both are already `1`, which is the usual case. If the particles are also meant to
+fade out as they age, **multiply** the two together rather than connecting the parameter directly.
+
+`makeMaterialsUnique` clones the **VFX asset** as well, for the same reason it clones materials:
+two components pointing at one `.graphVfx` would fade together. A front/back pair of systems
+therefore needs either separate graph assets or that flag left on.
+
+**A VFX does not pay the "keeps simulating while invisible" cost.** Unlike GPU Particles it has
+an `emitting` flag, so a system that idles for a long time before appearing can stop emitting
+while hidden and start again before the fade in. `disableWhenHidden` is still the wrong tool —
+combined with `initialState: "hidden"` it disables the object during init and the effect can
+never be shown again.
+
 #### Why one material per Image matters here
 
 `fade` mode writes alpha into the material's `baseColor`. Two Images sharing a material would
@@ -887,6 +924,18 @@ in exactly the thing I had not questioned: two systems at `renderOrder -1` and `
 the segmentation composite. **Rule:** anything sharing `Camera 3D / Selfie` with the `User` post
 effect must state its `renderOrder` relative to it. Zero is not a neutral value there, it is a tie
 with the thing that paints the whole person over the frame.
+
+**P14 — I debugged a Fader that was doing nothing, and the component had been deleted.**
+I had just added VFX support to `Fader.js`, the preview showed no change, so I assumed my code
+was wrong and instrumented it with prints. **No prints appeared at all** — and I read that as the
+edits not reaching the runtime, checked the Cache, the compile log, even whether another project
+owned the preview. `Fader.js` calls `init()` at file scope and prints on every construction, so
+zero output could only mean no Fader existed: the ScriptComponent had been removed from the
+object between my reading the scene and my testing it. **Rule:** a script that logs at
+initialization producing *nothing* is evidence the component is gone, not that the code is
+broken — re-read the object's component list before instrumenting anything. `.virtual-scene.json`
+answers it in one line, and it is a snapshot, so re-read it rather than trusting the copy you
+parsed earlier in the session.
 
 **P10 — I guessed a Lens API signature and shipped `global.scene.copySceneObject(...)`.**
 It threw `TypeError: not a function`; the method belongs to `SceneObject`, not the scene.
