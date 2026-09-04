@@ -1,8 +1,8 @@
-- !<AssetImportMetadata/1432a1ed-11a3-44b4-85a5-f2219b2d664d>
+- !<AssetImportMetadata/60e1100d-00aa-4c1e-a2d4-f6e5cb00322e>
   ImportedAssetIds:
-    Material: !<reference> 861ae21f-ecba-42b1-9d35-4ef58a85f7a9
-  ImporterName: MaterialImporter
-  PrimaryAsset: !<reference> 861ae21f-ecba-42b1-9d35-4ef58a85f7a9
+    Texture: !<reference> a0ca3e98-1856-4eed-b341-ad7727b4fe70
+  ImporterName: SegmentationTextureImporter
+  PrimaryAsset: !<reference> a0ca3e98-1856-4eed-b341-ad7727b4fe70
   PackageType: NotAPackage
   LegacyPackagePolicy: ~
   ExtraData:
